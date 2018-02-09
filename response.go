@@ -33,6 +33,9 @@ type Response struct {
 	GrossAmount       string     `json:"gross_amount"`
 	VANumbers         []VANumber `json:"va_numbers"`
 	PaymentCode       string     `json:"payment_code"`
+	PaymentType       string     `json:"payment_type"`
+	FraudStatus       string     `json:"fraud_status"`
+	Actions       	  []GopayResponse `json:"actions"`
 }
 
 // Response after calling the Snap API
@@ -42,3 +45,26 @@ type SnapResponse struct {
 	RedirectURL   string   `json:"redirect_url"`
 	ErrorMessages []string `json:"error_messages"`
 }
+
+type GopayResponse struct {
+    Name 	string		`json:"name"`
+    Method 	string		`json:"method"`
+    Url 	string		`json:"url"`
+}
+// "actions": [{
+// 		"name": "generate-qr-code",
+// 		"method": "GET",
+// 		"url": "https://api.sandbox.veritrans.co.id/v2/gopay/b8b80dee-30c7-4a61-9e91-8a01d15466b6/qr-code"
+// 	}, {
+// 		"name": "deeplink-redirect",
+// 		"method": "GET",
+// 		"url": "https://api.sandbox.veritrans.co.id:7676/gopay/ui/checkout?referenceid=cfCPSRhjbw"
+// 	}, {
+// 		"name": "get-status",
+// 		"method": "GET",
+// 		"url": "https://api.sandbox.veritrans.co.id/v2/b8b80dee-30c7-4a61-9e91-8a01d15466b6/status"
+// 	}, {
+// 		"name": "cancel",
+// 		"method": "POST",
+// 		"url": "https://api.sandbox.veritrans.co.id/v2/b8b80dee-30c7-4a61-9e91-8a01d15466b6/cancel"
+// 	}]
