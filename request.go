@@ -140,8 +140,10 @@ type ConvStoreDetail struct {
 
 // Represent the request payload
 type ChargeReq struct {
-	PaymentType        PaymentType        `json:"payment_type"`
-	TransactionDetails TransactionDetails `json:"transaction_details"`
+	PaymentType        	PaymentType        	`json:"payment_type"`
+	TransactionDetails 	TransactionDetails 	`json:"transaction_details"`
+	TransactionTime 	string 				`json:"transaction_time"` // "2016-12-07 11:54:12"
+	CustomExpiry        CustomExpiry        `json:"custom_expiry,omitempty"`
 
 	CreditCard                    *CreditCardDetail              `json:"credit_card,omitempty"`
 	BankTransfer                  *BankTransferDetail            `json:"bank_transfer,omitempty"`
@@ -176,3 +178,14 @@ type CaptureReq struct {
 	TransactionID string  `json:"transaction_id"`
 	GrossAmt      float64 `json:"gross_amount"`
 }
+
+type CustomExpiry struct {
+	OrderTime  		string 	`json:"order_time,omitempty"` // "2016-12-07 11:54:12 +0700", if empty use transaction time
+	ExpiryDuration  string 	`json:"expiry_duration"`
+	Unit  			string 	`json:"unit,omitempty"` // Valid values are: second, minute, hour, or day. NOTE: If undefined, default is minute
+}
+  // "custom_expiry": {
+  //     "order_time": "2016-12-07 11:54:12 +0700",
+  //     "expiry_duration": 60,
+  //     "unit": "minute"
+  // }
