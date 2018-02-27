@@ -181,7 +181,7 @@ type CaptureReq struct {
 
 type CustomExpiry struct {
 	OrderTime  		string 	`json:"order_time,omitempty"` // "2016-12-07 11:54:12 +0700", if empty use transaction time
-	ExpiryDuration  string 	`json:"expiry_duration"`
+	ExpiryDuration  int 	`json:"expiry_duration"`
 	Unit  			string 	`json:"unit,omitempty"` // Valid values are: second, minute, hour, or day. NOTE: If undefined, default is minute
 }
   // "custom_expiry": {
