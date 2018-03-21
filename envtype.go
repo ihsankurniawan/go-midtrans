@@ -14,7 +14,7 @@ const (
 var typeString = map[EnvironmentType]string {
     Sandbox: "https://api.sandbox.veritrans.co.id",
     Production: "https://api.veritrans.co.id",
-    BcaSandbox: "http://117.102.118.210:8080/v2",
+    BcaSandbox: "http://117.102.118.210:8080",
 }
 
 // implement stringer
